@@ -20,6 +20,21 @@
     "webpack-notifier": "^1.15.0"
   },
   "dependencies": {
-    "core-js": "^3.33.0"
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@moted/react-leaflet-sidebarv2": "^1.0.3",
+    "@mui/icons-material": "^5.14.13",
+    "@mui/material": "^5.14.13",
+    "@mui/system": "^5.14.13",
+    "core-js": "^3.33.0",
+    "leaflet": "^1.9.4",
+    "leaflet-arrowheads": "^1.4.0",
+    "leaflet-polycolor": "^2.0.4",
+    "leaflet-polylinedecorator": "^1.6.0",
+    "object-hash": "^3.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-leaflet": "^4.2.1",
+    "react-leaflet-custom-control": "^1.4.0"
   }
 }
