@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98726f3c-d87e-49df-a3e4-d9364a60fdf3" name="Changes" comment="development environment">
-      <change afterPath="$PROJECT_DIR$/assets/Service/DataMapBridgeGeoJson.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/flumen.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/flumen.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="98726f3c-d87e-49df-a3e4-d9364a60fdf3" name="Changes" comment="Base structure and relationship done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/controllers/hello_controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +159,9 @@
       <workItem from="1698557979033" duration="14312000" />
       <workItem from="1698593360344" duration="7733000" />
       <workItem from="1698646055815" duration="14148000" />
-      <workItem from="1698732609360" duration="3771000" />
+      <workItem from="1698732609360" duration="8767000" />
+      <workItem from="1698864990066" duration="10605000" />
+      <workItem from="1698907488970" duration="13619000" />
     </task>
     <task id="LOCAL-00001" summary="development environment">
       <option name="closed" value="true" />
@@ -176,15 +171,35 @@
       <option name="project" value="LOCAL" />
       <updated>1697360993402</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Base structure and relationship done">
+      <option name="closed" value="true" />
+      <created>1698740232576</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698740232576</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="development environment" />
-    <option name="LAST_COMMIT_MESSAGE" value="development environment" />
+    <MESSAGE value="Base structure and relationship done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Base structure and relationship done" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
