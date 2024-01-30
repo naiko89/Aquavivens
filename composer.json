@@ -14,6 +14,7 @@
         "symfony/dotenv": "6.3.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.3.*",
+        "symfony/maker-bundle": "^1.52",
         "symfony/monolog-bundle": "^3.8",
         "symfony/runtime": "6.3.*",
         "symfony/stimulus-bundle": "^2.12",
@@ -70,8 +71,5 @@
             "allow-contrib": false,
             "require": "6.3.*"
         }
-    },
-    "require-dev": {
-        "symfony/maker-bundle": "^1.51"
     }
 }

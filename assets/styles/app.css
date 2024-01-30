@@ -2,6 +2,7 @@ body {
     height: 100%;
     width: 100%;
     background-color: black;
+    margin: 0px;
 }
 
 .mapBox{
@@ -42,4 +43,40 @@ body {
     padding-left:0 !important;
     margin-top:0 !important;
     margin-left: 3px !important;
+}
+
+/**/
+
+.plant-marker-base {
+    background-color:#ffffff;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid blue;
+}
+.plant-marker-gen {
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid coral;
+}
+
+.pie-chart-container {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    overflow: hidden;
+    background-color: lightgray;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: darkgreen;
+}
+
+.pie-chart {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: green;  /* Colore della fetta del grafico */
 }

@@ -7,11 +7,18 @@ import MarkerChemy from "../component/map/geometries/MarkerChemy";
 import hash from 'object-hash';
 import 'leaflet-polylinedecorator';
 
+
 function DataMapBridgeGeoJson({data, type, viewer}) {
     const [geojsonData, setGeojsonData] = useState(data);
     const handleNodeClick = (id, type) => {
+        alert('sei al superiore'+ id + type)
         viewer(id, type)
     }
+
+    console.log('-----------'+type)
+    console.log(data)
+
+    //type==='phyPoint' ? console.log(data) :''
 
     return (
         <>
@@ -42,12 +49,33 @@ function DataMapBridgeGeoJson({data, type, viewer}) {
                     ))
                 ): ''}
 
+                {type==='phyPoint' ?
+                    data.features.map((node,index)=>(
+                        <MarkerPhys
+                            key={index}
+                            position={node.geometry.coordinates}
+                            dimension={node.properties.dimens}
+                            status = {node.properties.status}
+                            bacino = {node.properties.bacino}
+                        />
+                    )) : ''
+                    }
+
+
+
             </LayerGroup>
 
         </>
 
 
         /*
+
+         <MarkerPhys
+                            key={index}
+                            position={node.geometry.coordinates}
+                        />
+
+
         *
         * {type==='phyPoint' ?
                 data.features.map((node,index)=>(

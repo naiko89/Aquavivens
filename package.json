@@ -23,9 +23,14 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.13",
-    "@mui/material": "^5.14.13",
+    "@mui/material": "^5.14.18",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.6",
     "@mui/system": "^5.14.13",
+    "@mui/x-date-pickers": "^6.18.1",
+    "chart.js": "^4.4.1",
     "core-js": "^3.33.0",
+    "dayjs": "^1.11.10",
+    "jquery": "^3.7.1",
     "leaflet": "^1.9.4",
     "leaflet-arrowheads": "^1.4.0",
     "leaflet-polycolor": "^2.0.4",
@@ -33,7 +38,9 @@
     "object-hash": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-google-recaptcha": "^3.1.0",
     "react-leaflet": "^4.2.1",
-    "react-leaflet-custom-control": "^1.4.0"
+    "react-leaflet-custom-control": "^1.4.0",
+    "styled-components": "^6.1.1"
   }
 }
