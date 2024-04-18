@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98726f3c-d87e-49df-a3e4-d9364a60fdf3" name="Changes" comment="FirstReb add stato and prelievo stations, add modal end alli of marker with polys">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="98726f3c-d87e-49df-a3e4-d9364a60fdf3" name="Changes" comment="Base structure and relationship done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Service/HeuristicSupport.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Service/HeuristicSupport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -25,11 +21,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="com.intellij.reactbuddy.palette" />
-        <option value="com.intellij.reactbuddy.previews" />
-        <option value="com.intellij.reactbuddy.index" />
-        <option value="com.intellij.reactbuddy.useInitial" />
-        <option value="com.intellij.reactbuddy.README" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -37,18 +28,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;naiko89&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/naiko89/Aquavivens&quot;,
-    &quot;accountId&quot;: &quot;f7794a3e-ee53-4a95-99c3-d5a0f7cb8da3&quot;
-  }
-}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -119,9 +98,6 @@
       <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
     </include_path>
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -133,12 +109,11 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Node.js.PrelievoTabs.js.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/naiko/PhpstormProjects/aquavivens/assets/component/modal&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/nicola/PhpstormProjects/flumen&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -146,57 +121,18 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/naiko/.local/share/JetBrains/Toolbox/apps/phpstorm/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="ReactDesignerToolWindowState">
-    <option name="myId2Visible">
-      <map>
-        <entry key="com.haulmont.rcb.reactComponents" value="false" />
-        <entry key="com.haulmont.rcb.reactInspector" value="false" />
-        <entry key="com.haulmont.rcb.storybook" value="false" />
-        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
-        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
-        <entry key="com.intellij.reactbuddy.storybook" value="false" />
-      </map>
-    </option>
-  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets/component/modal" />
-      <recent name="$PROJECT_DIR$/assets/component/map/geometries" />
       <recent name="$PROJECT_DIR$/public/MapGeometry" />
       <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$/assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets/component/map/geometries" />
-      <recent name="$PROJECT_DIR$/public/MapGeometry/eliminare" />
       <recent name="$PROJECT_DIR$/public/MapGeometry" />
     </key>
-  </component>
-  <component name="RunManager" selected="Node.js.PrelievoTabs.js">
-    <configuration name="PrelievoTabs.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/assets/component/Tabs/PrelievoTabs.js" working-dir="$PROJECT_DIR$/assets/component/Tabs">
-      <method v="2" />
-    </configuration>
-    <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/assets/app.js" working-dir="$PROJECT_DIR$/assets">
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Node.js.PrelievoTabs.js" />
-        <item itemvalue="Node.js.app.js" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PS-241.14494.237" />
-        <option value="bundled-php-predefined-ba97393d7c68-8f0632a2a215-com.jetbrains.php.sharedIndexes-PS-241.14494.237" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -225,105 +161,7 @@
       <workItem from="1698646055815" duration="14148000" />
       <workItem from="1698732609360" duration="8767000" />
       <workItem from="1698864990066" duration="10605000" />
-      <workItem from="1698907488970" duration="13754000" />
-      <workItem from="1699004688589" duration="6896000" />
-      <workItem from="1699079029999" duration="12608000" />
-      <workItem from="1699600034443" duration="2289000" />
-      <workItem from="1699603172249" duration="5283000" />
-      <workItem from="1699609553635" duration="7793000" />
-      <workItem from="1699633845991" duration="6501000" />
-      <workItem from="1699682489591" duration="14166000" />
-      <workItem from="1699700673139" duration="845000" />
-      <workItem from="1699772071526" duration="14035000" />
-      <workItem from="1699792893741" duration="9713000" />
-      <workItem from="1699855729161" duration="16248000" />
-      <workItem from="1699895010907" duration="2104000" />
-      <workItem from="1699942084706" duration="7874000" />
-      <workItem from="1699950677812" duration="4095000" />
-      <workItem from="1699979678444" duration="4619000" />
-      <workItem from="1700028145372" duration="20091000" />
-      <workItem from="1700056011104" duration="4145000" />
-      <workItem from="1700116939556" duration="10519000" />
-      <workItem from="1700206296131" duration="3516000" />
-      <workItem from="1700375885206" duration="768000" />
-      <workItem from="1700376715428" duration="4771000" />
-      <workItem from="1700381512736" duration="2184000" />
-      <workItem from="1700383899941" duration="3829000" />
-      <workItem from="1700412952119" duration="3584000" />
-      <workItem from="1700460346320" duration="17531000" />
-      <workItem from="1700484707094" duration="3965000" />
-      <workItem from="1700498347696" duration="220000" />
-      <workItem from="1700498687247" duration="4538000" />
-      <workItem from="1700546720451" duration="20587000" />
-      <workItem from="1700633480171" duration="19459000" />
-      <workItem from="1700656319031" duration="178000" />
-      <workItem from="1700816785039" duration="2886000" />
-      <workItem from="1700897897728" duration="7411000" />
-      <workItem from="1700982651019" duration="3212000" />
-      <workItem from="1701155411934" duration="6668000" />
-      <workItem from="1701898021704" duration="1245000" />
-      <workItem from="1702104737448" duration="795000" />
-      <workItem from="1702376458462" duration="25000" />
-      <workItem from="1702967115606" duration="211000" />
-      <workItem from="1703262164894" duration="1277000" />
-      <workItem from="1705136286500" duration="4836000" />
-      <workItem from="1705301164593" duration="572000" />
-      <workItem from="1705301760784" duration="16000" />
-      <workItem from="1705392825991" duration="2658000" />
-      <workItem from="1705395504975" duration="70000" />
-      <workItem from="1705521540403" duration="930000" />
-      <workItem from="1705529288342" duration="27000" />
-      <workItem from="1705731176261" duration="11935000" />
-      <workItem from="1705903626991" duration="18449000" />
-      <workItem from="1705994084556" duration="10326000" />
-      <workItem from="1706078047026" duration="2002000" />
-      <workItem from="1706283440331" duration="3771000" />
-      <workItem from="1706513019462" duration="645000" />
-      <workItem from="1706609732544" duration="317000" />
-      <workItem from="1706610142899" duration="2834000" />
-      <workItem from="1706684625432" duration="11955000" />
-      <workItem from="1706945991094" duration="650000" />
-      <workItem from="1707817210759" duration="691000" />
-      <workItem from="1709368578271" duration="2018000" />
-      <workItem from="1709532379691" duration="16978000" />
-      <workItem from="1709628338262" duration="3932000" />
-      <workItem from="1709705578810" duration="7933000" />
-      <workItem from="1710138555912" duration="11227000" />
-      <workItem from="1710223595535" duration="16469000" />
-      <workItem from="1710243342575" duration="696000" />
-      <workItem from="1710579696987" duration="32000" />
-      <workItem from="1710925780876" duration="5413000" />
-      <workItem from="1710967334697" duration="22000" />
-      <workItem from="1711441506282" duration="1426000" />
-      <workItem from="1712234645747" duration="2457000" />
-      <workItem from="1713428168194" duration="161000" />
-      <workItem from="1713428339049" duration="2524000" />
-      <workItem from="1713620684170" duration="1348000" />
-      <workItem from="1713770101604" duration="2264000" />
-      <workItem from="1713869930419" duration="632000" />
-      <workItem from="1713873732811" duration="1413000" />
-      <workItem from="1713956184124" duration="33000" />
-      <workItem from="1713959232299" duration="884000" />
-      <workItem from="1714144215652" duration="2488000" />
-      <workItem from="1714247111222" duration="629000" />
-      <workItem from="1714248092692" duration="1283000" />
-      <workItem from="1714252022855" duration="695000" />
-      <workItem from="1714374425969" duration="10000" />
-      <workItem from="1714374458678" duration="23000" />
-      <workItem from="1714632851665" duration="443000" />
-      <workItem from="1714734374796" duration="2043000" />
-      <workItem from="1714938476839" duration="92000" />
-      <workItem from="1715460527342" duration="44000" />
-      <workItem from="1715759804426" duration="11009000" />
-      <workItem from="1715847133078" duration="1117000" />
-      <workItem from="1715858798035" duration="4524000" />
-      <workItem from="1715880035479" duration="1239000" />
-      <workItem from="1715936054788" duration="20032000" />
-      <workItem from="1716020029886" duration="16304000" />
-      <workItem from="1716188300495" duration="6480000" />
-      <workItem from="1716360581173" duration="19091000" />
-      <workItem from="1716451820928" duration="17623000" />
-      <workItem from="1716491382494" duration="1503000" />
+      <workItem from="1698907488970" duration="13619000" />
     </task>
     <task id="LOCAL-00001" summary="development environment">
       <option name="closed" value="true" />
@@ -341,39 +179,7 @@
       <option name="project" value="LOCAL" />
       <updated>1698740232576</updated>
     </task>
-    <task id="LOCAL-00003" summary="Division base of Graph : done">
-      <option name="closed" value="true" />
-      <created>1698921864982</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1698921864983</updated>
-    </task>
-    <task id="LOCAL-00004" summary="I started developing it on 15/10/23 and uploaded a basic version on 30/01/24">
-      <option name="closed" value="true" />
-      <created>1706610438149</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1706610438149</updated>
-    </task>
-    <task id="LOCAL-00005" summary="I started developing it on 15/10/23 and uploaded a basic version on 30/01/24">
-      <option name="closed" value="true" />
-      <created>1713428898337</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1713428898337</updated>
-    </task>
-    <task id="LOCAL-00006" summary="FirstReb add stato and prelievo stations, add modal end alli of marker with polys">
-      <option name="closed" value="true" />
-      <created>1716059855674</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1716059855674</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,19 +190,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="text">
-                    <value>
-                      <list>
-                        <option value="FIrstReb" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -405,26 +199,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="development environment" />
     <MESSAGE value="Base structure and relationship done" />
-    <MESSAGE value="Division base of Graph : done" />
-    <MESSAGE value="I started developing it on 15/10/23 and uploaded a basic version on 30/01/24" />
-    <MESSAGE value="FirstReb add stato and prelievo stations, add modal end alli of marker with polys" />
-    <option name="LAST_COMMIT_MESSAGE" value="FirstReb add stato and prelievo stations, add modal end alli of marker with polys" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/assets/component/Panel/PanelMainLateral.js</url>
-          <line>41</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/assets/Service/NavigatorGraph.js</url>
-          <line>56</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <option name="LAST_COMMIT_MESSAGE" value="Base structure and relationship done" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
