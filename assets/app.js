@@ -25,7 +25,7 @@ const ArmorComponent = () => {
     // const [geojsonDataNodi, setGeojsonDataNodi] = useState(null)
     const [calcNodesGeomKey, setCalcNodesGeomKey] = useState(null)
     const [idNodes, setIdNodes] = useState([])
-    const [geojsonDataPhyUnique, setGeojsonDataPhyUnique] = useState(null)
+    const [geojsonDataPhyUnique, setGeojsonDataPlantsUnique] = useState(null)
     // const [geojsonDataCheUnique, setGeojsonDataCheUnique] = useState(null)
     const [geojsonHooksOnLedra, setGeojsonHooksOnLedra] = useState(null)
 
@@ -41,7 +41,7 @@ const ArmorComponent = () => {
 
         let dataJson = {CalcNodesGeomKey: '', idNodes: '',GeojsonDataPolilyne:'', GeojsonHooksOnLedra: '',GeojsonDataPhyUnique: '', Plants:{features:''}}
 
-        fetch('/MapGeometry/alll.geojson')///MapGeometry/FiulanaDef.geojson all.geojson
+        fetch('/MapGeometry/riverLines.geojson')///MapGeometry/FiulanaDef.geojson all.geojson
             .then((response) => response.json())
             .then((data) => {
                 const uniqueNodes = {}
@@ -115,23 +115,29 @@ const ArmorComponent = () => {
                 dataJson.idNodes = idNodes
                 return data;
             }).then((dataPoly) => {
-            fetch('/MapGeometry/LedraAgganciato.geojson') ///--->qui ho il caricamentgo del geojson/xmls del ledra
+            fetch('/MapGeometry/LedraHookedPlants.geojson') ///--->qui ho il caricamentgo del geojson/xmls del ledra
                 .then((response) => response.json())
                 .then(dataPlants=>{
                     dataJson.GeojsonDataPolilyne = dataPoly
                     dataJson.Plants.features = dataPlantBuilder(dataPlants, dataPoly)
-                    dataJson.GeojsonDataPhyUnique = dataPlants
+                    dataJson.GeojsonDataPlantsUnique = dataPlants
                 })
             //dataPlantBuilder(data, geojsonDataPolilyne);
         }).then(() =>{
-            fetch('/MapGeometry/PhyPoints.geojson')
+            fetch('/MapGeometry/RealOtherHookedPlants.geojson') ////--->questi sono inutili ma li carico perchè se un domani voglio mettere giù punti fuori dal ledra veri li inserirò qua
                 .then((response) => response.json())
-                .then((data) => {
+                .then((data) => { //--->data is useless
+
                     setCalcNodesGeomKey(dataJson.CalcNodesGeomKey)
                     setIdNodes(dataJson.idNodes)
-                    setGeojsonDataPhyUnique(dataJson.GeojsonDataPhyUnique)
+                    setGeojsonDataPlantsUnique(dataJson.GeojsonDataPlantsUnique)
                     setGeojsonDataPolilyne(dataJson.GeojsonDataPolilyne)
                     setGeojsonHooksOnLedra(dataJson.Plants)
+
+
+                    // console.log('questaaaaaaaaaaaa')
+                    // console.log(dataJson.Plants.features)
+
                     console.log('hai finito di caricare i dati')
                 })
                 .catch((error) => {
@@ -155,6 +161,7 @@ const ArmorComponent = () => {
             { areYouHuman === false ?
                 <Container maxWidth={false} style={{ height: '100vh', display: 'flex',
                     margin: '0px',
+                    padding:'0px',
                     flexDirection: 'column', alignItems: 'center',
                     justifyContent: 'center', backgroundColor:'lightblue',
                     backgroundImage: 'url("https://i.postimg.cc/6qM20gNK/sfondo.jpg")',
@@ -192,7 +199,11 @@ const ArmorComponent = () => {
 
 
                 : <div id="my-map-box" style={{ width: width + 'px', height: height + 'px' }}>
-                    {<MapComponents polylines={geojsonDataPolilyne} nodes={calcNodesGeomKey} idNodes={idNodes} hookOnLedra={geojsonHooksOnLedra} plants={geojsonHooksOnLedra}/>}
+                    {
+
+                        <MapComponents polylines={geojsonDataPolilyne} nodes={calcNodesGeomKey} idNodes={idNodes} hookOnLedra={geojsonHooksOnLedra} plants={geojsonHooksOnLedra}/>
+
+                    }
                 </div>
 
                     }

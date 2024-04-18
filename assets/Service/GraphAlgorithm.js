@@ -107,8 +107,8 @@ function GraphAlgorithm(totNodes,incidentMatrix, graph, idNodeSelect) {
     }
 
 
-   // console.log('how it read')
-   // console.log(howItRead)
+    console.log('how it read')
+    console.log(howItRead)
 
     return howItRead
 }

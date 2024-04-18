@@ -2,23 +2,29 @@ import React, { useEffect, useState } from 'react';
 import { GeoJSON, LayerGroup } from 'react-leaflet';
 import PolylineFlumen from "../component/map/geometries/PolylineFlumen";
 import MarkerNode from "../component/map/geometries/MarkerNode";
-import MarkerPhys from "../component/map/geometries/MarkerPhys";
+import MarkerPlant from "../component/map/geometries/MarkerPlant";
 import MarkerChemy from "../component/map/geometries/MarkerChemy";
 import hash from 'object-hash';
 import 'leaflet-polylinedecorator';
 
 
-function DataMapBridgeGeoJson({data, type, viewer}) {
+function DataMapBridgeGeoJson({data, type, viewer, handlerPlantValues}) {
     const [geojsonData, setGeojsonData] = useState(data);
+    const [toggleModal, setToggleModal] = useState(false)
+    // const []
     const handleNodeClick = (id, type) => {
-        alert('sei al superiore'+ id + type)
         viewer(id, type)
     }
 
-    console.log('-----------'+type)
-    console.log(data)
+    let dataModalPointHandler= (data) =>{
+        setToggleModal(true)
+        handlerPlantValues(data)
+    }
 
-    //type==='phyPoint' ? console.log(data) :''
+    // console.log('-----------'+type) // console.log(data)
+
+    let modal= toggleModal === false ? '' : <div className={''}></div>
+
 
     return (
         <>
@@ -51,8 +57,10 @@ function DataMapBridgeGeoJson({data, type, viewer}) {
 
                 {type==='phyPoint' ?
                     data.features.map((node,index)=>(
-                        <MarkerPhys
+                        <MarkerPlant
                             key={index}
+                            idNode={index}
+                            viewDataModal = {dataModalPointHandler}
                             position={node.geometry.coordinates}
                             dimension={node.properties.dimens}
                             status = {node.properties.status}
@@ -60,41 +68,8 @@ function DataMapBridgeGeoJson({data, type, viewer}) {
                         />
                     )) : ''
                     }
-
-
-
             </LayerGroup>
-
         </>
-
-
-        /*
-
-         <MarkerPhys
-                            key={index}
-                            position={node.geometry.coordinates}
-                        />
-
-
-        *
-        * {type==='phyPoint' ?
-                data.features.map((node,index)=>(
-                    <MarkerPhys
-                        key={index}
-                        position={node.geometry.coordinates}
-                    />
-            )) : ''}
-
-            {type==='chePoint' ? data.features.map((node,index)=>(
-                <MarkerChemy
-                    key={node.properties.fid}
-                    position={node.geometry.coordinates}
-                />
-            )) : ''}
-        *
-        * */
-
-
     );
 }
 
