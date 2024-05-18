@@ -4,10 +4,10 @@ import leaflet from 'leaflet';
 import React, {useEffect, useState} from "react"
 import ReactDOM from "react-dom/client"
 import MapComponents from "./component/MapComponents";
-import './styles/app.css';
 import Recapt from "./Service/Recapt";
 import { Container, Card, CardContent, Typography, Grid } from '@mui/material';
 import dataPlantBuilder from "./Service/DataPlantBuilder";
+import HeuristicSupport from "./Service/HeuristicSupport";
 
 
 
@@ -22,12 +22,13 @@ const ArmorComponent = () => {
     const [height, setHeight] = useState(window.innerHeight)
     const [width, setWidth] = useState(window.innerWidth)
     const [geojsonDataPolilyne, setGeojsonDataPolilyne] = useState(null)
-    // const [geojsonDataNodi, setGeojsonDataNodi] = useState(null)
     const [calcNodesGeomKey, setCalcNodesGeomKey] = useState(null)
     const [idNodes, setIdNodes] = useState([])
     const [geojsonDataPhyUnique, setGeojsonDataPlantsUnique] = useState(null)
-    // const [geojsonDataCheUnique, setGeojsonDataCheUnique] = useState(null)
     const [geojsonHooksOnLedra, setGeojsonHooksOnLedra] = useState(null)
+    const [stazioniStatoEcologico, setStazioniStatoEcologico] = useState(null)
+    const [stazioniPrelievo, setStazioniPrelievo] = useState(null)
+    const[areYouHuman, setAreYouHuman] = useState(false)
 
     const handleResize = () => {
         const newHeight = window.innerHeight
@@ -37,125 +38,50 @@ const ArmorComponent = () => {
     }
     window.addEventListener("resize", handleResize) //useEffect(() => {handleResize(); return () => window.removeEventListener("resize", handleResize)}, [])
 
+
     useEffect(() => {
+        async function fetchData() {
+            try {
+                const response1 = await fetch('/MapGeometry/RiversLines.geojson');
+                if (!response1.ok) throw new Error('Errore nel caricamento di riverLines.geojson');
+                const riversData = await response1.json();
 
-        let dataJson = {CalcNodesGeomKey: '', idNodes: '',GeojsonDataPolilyne:'', GeojsonHooksOnLedra: '',GeojsonDataPhyUnique: '', Plants:{features:''}}
+                const response2 = await fetch('/MapGeometry/LedraAgganciatoUni.geojson');
+                if (!response2.ok) throw new Error('Errore nel caricamento di LedraHookedPlants.geojson');
+                const dataLedraUni = await response2.json();
 
-        fetch('/MapGeometry/riverLines.geojson')///MapGeometry/FiulanaDef.geojson all.geojson
-            .then((response) => response.json())
-            .then((data) => {
-                const uniqueNodes = {}
-                data.features.forEach((feature, id) => {
-                    if (feature.geometry.type === 'LineString') {
-                        const lineFid = feature.properties.fid
-                        const startNode = feature.geometry.coordinates[0]
-                        const endNode = feature.geometry.coordinates[feature.geometry.coordinates.length - 1]
-                        const startNodeKey = `${startNode[0]},${startNode[1]}`
-                        const endNodeKey = `${endNode[0]},${endNode[1]}`
-                        if (!uniqueNodes[startNodeKey]) {
-                            uniqueNodes[startNodeKey] = { type: 'Point', coordinates: startNode, lineRelations: [] }
-                        }
-                        if (!uniqueNodes[endNodeKey]) {
-                            uniqueNodes[endNodeKey] = { type: 'Point', coordinates: endNode, lineRelations: [] }
-                        }
+                const response3 = await fetch('/MapGeometry/StazioniStatoEcologico.geojson');
+                if (!response3.ok) throw new Error('Errore nel caricamento di RealOtherHookedPlants.geojson');
+                const stazioniStatoEcologico = await response3.json();
 
-                        uniqueNodes[startNodeKey].lineRelations.push({
-                            nodeId: false,
-                            lineId : id,
-                            lineFid: lineFid, // Utilizza l'ID univoco della linea come ID
-                            verse: 1,
-                            pointEnd: endNode,
-                            type: 'start'
-                        })
+                const response4 = await fetch('/MapGeometry/StazioniPrelievo.geojson');
+                if (!response4.ok) throw new Error('Errore nel caricamento di RealOtherHookedPlants.geojson');
+                const stazioniPrelievo = await response4.json();
 
-                        uniqueNodes[endNodeKey].lineRelations.push({
-                            nodeId: false,
-                            lineId : id,
-                            lineFid: lineFid, // Utilizza l'ID univoco della linea come ID
-                            verse: -1, // Relazione -1 quando entriamo nel nodo
-                            pointStart: startNode,
-                            type: 'end'
-                        })
-                    }
-                });
-                for (const key in uniqueNodes) {
-                    if (uniqueNodes.hasOwnProperty(key)) {
-                        const node = uniqueNodes[key]
-                        const newIdNode = idNodes.length
-                        idNodes[newIdNode] = {
-                            type: 'Feature',
-                            properties: {
-                                name: node.name,
-                                fid: newIdNode,
-                                realtionsFidPoly : node.lineRelations
-                            },
-                            geometry: {
-                                type: 'Point',
-                                coordinates: node.coordinates
-                            }
-                        }
-                        node.lineRelations.map( relation =>{
-                            const keyToFind = relation.pointStart ? relation.pointStart[0] + ',' + relation.pointStart[1]
-                                : relation.pointEnd ? relation.pointEnd[0] + ',' + relation.pointEnd[1] : null;
-                            let idRel = 0
-                            for(const keyRel in uniqueNodes) {
-                                if(keyRel === keyToFind) {
-                                    if (!idNodes[newIdNode].properties.relationsLines) {
-                                        idNodes[newIdNode].properties.relationsLines = []
-                                    }
-                                    relation.nodeId = idRel
-                                    idNodes[newIdNode].properties.relationsLines.push({relation})
-                                    break
-                                }
-                                else{ idRel++ }
-                            }
-                        })
-                    }}
-                dataJson.CalcNodesGeomKey = uniqueNodes
-                dataJson.idNodes = idNodes
-                return data;
-            }).then((dataPoly) => {
-            fetch('/MapGeometry/LedraHookedPlants.geojson') ///--->qui ho il caricamentgo del geojson/xmls del ledra
-                .then((response) => response.json())
-                .then(dataPlants=>{
-                    dataJson.GeojsonDataPolilyne = dataPoly
-                    dataJson.Plants.features = dataPlantBuilder(dataPlants, dataPoly)
-                    dataJson.GeojsonDataPlantsUnique = dataPlants
-                })
-            //dataPlantBuilder(data, geojsonDataPolilyne);
-        }).then(() =>{
-            fetch('/MapGeometry/RealOtherHookedPlants.geojson') ////--->questi sono inutili ma li carico perchè se un domani voglio mettere giù punti fuori dal ledra veri li inserirò qua
-                .then((response) => response.json())
-                .then((data) => { //--->data is useless
+                const heuristic = new HeuristicSupport(riversData);
 
-                    setCalcNodesGeomKey(dataJson.CalcNodesGeomKey)
-                    setIdNodes(dataJson.idNodes)
-                    setGeojsonDataPlantsUnique(dataJson.GeojsonDataPlantsUnique)
-                    setGeojsonDataPolilyne(dataJson.GeojsonDataPolilyne)
-                    setGeojsonHooksOnLedra(dataJson.Plants)
+                console.log(stazioniStatoEcologico);
+
+                // Aggiorna lo stato con i dati caricati
+                setCalcNodesGeomKey(heuristic.calcNode());
+                setIdNodes([]);
+                //setGeojsonDataPlantsUnique(dataJson.GeojsonDataPlantsUnique);
+                setGeojsonDataPolilyne(riversData);
+                // setGeojsonHooksOnLedra(dataJson.Plants);
+                setAreYouHuman(true)
+                setStazioniStatoEcologico(stazioniStatoEcologico)
+                setStazioniPrelievo(stazioniPrelievo)
+
+                console.log('Hai finito di caricare i dati')
+            } catch (error) {
+                console.error('Errore nel caricamento del file GeoJSON:', error);
+            }
+        }
 
 
-                    // console.log('questaaaaaaaaaaaa')
-                    // console.log(dataJson.Plants.features)
-
-                    console.log('hai finito di caricare i dati')
-                })
-                .catch((error) => {
-                    console.error('Errore nel caricamento del file GeoJSON:', error);
-                })
-                .catch((error) => {
-                    console.error('Errore nel caricamento del file GeoJSON:', error);
-                });
-        })
-
-
-
-
+        fetchData();
     }, []);
 
-
-
-    const[areYouHuman, setAreYouHuman] = useState(false) //--->se entri dritto il caricamento dei dati avviene in maniera asincrona ma sbagliata serve un if sul rendering
     return (
         <div>
             { areYouHuman === false ?
@@ -201,7 +127,14 @@ const ArmorComponent = () => {
                 : <div id="my-map-box" style={{ width: width + 'px', height: height + 'px' }}>
                     {
 
-                        <MapComponents polylines={geojsonDataPolilyne} nodes={calcNodesGeomKey} idNodes={idNodes} hookOnLedra={geojsonHooksOnLedra} plants={geojsonHooksOnLedra}/>
+                        <MapComponents rivers={geojsonDataPolilyne}
+                                       nodes={calcNodesGeomKey}
+                                       idNodes={idNodes}
+                                       hookOnLedra={geojsonHooksOnLedra}
+                                       plants={geojsonHooksOnLedra}
+                                       stazioniStato={stazioniStatoEcologico}
+                                       stazioniPrelievo={stazioniPrelievo}
+                        />
 
                     }
                 </div>

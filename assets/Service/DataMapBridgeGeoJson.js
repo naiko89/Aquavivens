@@ -4,26 +4,32 @@ import PolylineFlumen from "../component/map/geometries/PolylineFlumen";
 import MarkerNode from "../component/map/geometries/MarkerNode";
 import MarkerPlant from "../component/map/geometries/MarkerPlant";
 import MarkerChemy from "../component/map/geometries/MarkerChemy";
+import MarkerStation from "../component/map/geometries/MarkerStation";
 import hash from 'object-hash';
 import 'leaflet-polylinedecorator';
 
 
-function DataMapBridgeGeoJson({data, type, viewer, handlerPlantValues}) {
+
+function DataMapBridgeGeoJson({data, type, viewer, handlerPlantValues, toggleModal}) {
     const [geojsonData, setGeojsonData] = useState(data);
-    const [toggleModal, setToggleModal] = useState(false)
     // const []
     const handleNodeClick = (id, type) => {
         viewer(id, type)
     }
 
-    let dataModalPointHandler= (data) =>{
-        setToggleModal(true)
-        handlerPlantValues(data)
-    }
 
+    let dataModalPointHandler= (reactComponent) =>{
+        alert('vai');
+        toggleModal(reactComponent)
+    }
     // console.log('-----------'+type) // console.log(data)
 
-    let modal= toggleModal === false ? '' : <div className={''}></div>
+
+
+
+
+
+
 
 
     return (
@@ -44,20 +50,24 @@ function DataMapBridgeGeoJson({data, type, viewer, handlerPlantValues}) {
                     ))
                 ):''}
 
+
                 {type==='node' ? (
-                    data.features.map((node,index)=>(
-                        <MarkerNode
-                            key={node.properties.fid}
-                            position={node.geometry.coordinates}
-                            id={node.properties.fid}
-                            viewer={handleNodeClick}
-                        />
+                  data.map((node,index)=>(
+
+                    <MarkerNode
+                          key={node.properties.fid}
+                          position={node.geometry.coordinates}
+                          id={node.properties.fid}
+                          viewer={handleNodeClick}
+                      />
+
                     ))
                 ): ''}
 
-                {type==='phyPoint' ?
+
+                {type==='stazioni' ?
                     data.features.map((node,index)=>(
-                        <MarkerPlant
+                        <MarkerStation
                             key={index}
                             idNode={index}
                             viewDataModal = {dataModalPointHandler}

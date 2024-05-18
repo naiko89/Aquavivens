@@ -14,11 +14,14 @@ function GraphAlgorithm(totNodes,incidentMatrix, graph, idNodeSelect) {
     let idSwitchNode = function changeSourceAnalysis(nodeToChange){
 
         let newNodeId
+        /*
         console.log(`%c Cerchiamo un nuovo id, avevamo : ${nodeToChange}`, 'background: #222; color: blue');
          console.log('la lunghezza delle relazioni all indietro è', incidentMatrix.incNegMatx[nodeToChange].length);
          console.log('il grafo rimanente è :', nodesOfMySelGraph);
          console.log('I valori passati sono (fonti pure) :', pureSources);
          console.log('Le fonti fatte sono :', sourcesDone);
+         */
+
 
 
          if(incidentMatrix.incNegMatx[nodeToChange].length!==0) {
@@ -38,10 +41,11 @@ function GraphAlgorithm(totNodes,incidentMatrix, graph, idNodeSelect) {
     }
 
 
+    /*
     console.group('MATRICI PARTENZA');
     console.log('Nodo selezionato ' + idNodeSelect, '\n', pureSources);
     console.groupEnd();
-
+    */
     while (pureSources.length >= 1) {
         const pureNode = pureSources[tmpId];
         countAnalysis++
@@ -49,15 +53,17 @@ function GraphAlgorithm(totNodes,incidentMatrix, graph, idNodeSelect) {
         let relationsPureMatrixNeg = incidentMatrix.incNegMatx[pureNode]
         let isSupPure= relationsPureMatrixNeg.length === 0 ? true : false
 
+        /*
         console.group(`%cANALIZZO IL PURE NODE ${pureNode} CHE HA INDICE SOURCE ---> ${tmpId}`, 'background: #222; color: #bada55');
         console.log('Le fonti stack all inizio del giro sono:', pureSources);
         console.log('Le fonti verificate all inizio del giro sono:', sourcesDone);
         console.groupEnd();
+        */
 
         if(pureNode !== idNodeSelect ) {
             switch (isSupPure) {
                 case true: {
-                    console.group('%cCASO VERO', 'color: green')
+                    // console.group('%cCASO VERO', 'color: green')
                     relationsPureMatrixPos.relations.map(streetWalker => { // verifico le relazioni in discesa pure
                         !pureSources.includes(streetWalker.id) && pureSources.unshift(streetWalker.id)
                         pureSources = pureSources.filter(node => node !== pureNode)
@@ -67,14 +73,14 @@ function GraphAlgorithm(totNodes,incidentMatrix, graph, idNodeSelect) {
                     idSwitchNode(pureNode)
                     nodesOfMySelGraph = nodesOfMySelGraph.filter(node => node !== pureNode)
                     sourcesDone.push(pureNode)
-                    console.log('Le fonti Stack modificate sono:', pureSources)
-                    console.groupEnd()
+                    // console.log('Le fonti Stack modificate sono:', pureSources)
+                    // console.groupEnd()
                     break
                 }
                 case false: {
-                    console.group('%cCASO FALSO', 'color: red')
+                    // console.group('%cCASO FALSO', 'color: red')
                     relationsPureMatrixNeg.map(streetClimber => {
-                        console.log('Prima della modifica delle negativa',incidentMatrix.incNegMatx[pureNode])
+                        // console.log('Prima della modifica delle negativa',incidentMatrix.incNegMatx[pureNode])
                         incidentMatrix.incNegMatx[pureNode] = incidentMatrix.incNegMatx[pureNode].filter( //rimuovo la relazione e rimarrà da analizzare il resto
                             value => {
                                 if (value === streetClimber) {
@@ -83,11 +89,11 @@ function GraphAlgorithm(totNodes,incidentMatrix, graph, idNodeSelect) {
                                     return true
                                 }
                             }) //-->deve rimanerti ciò che non è puro
-                        console.log('Source Fatte ' + sourcesDone.includes(streetClimber),sourcesDone)
-                        console.log('Eliminerò per il punto ' + pureNode  + ' ne rimangono '+incidentMatrix.incNegMatx[pureNode].length)
+                        // console.log('Source Fatte ' + sourcesDone.includes(streetClimber),sourcesDone)
+                        // console.log('Eliminerò per il punto ' + pureNode  + ' ne rimangono '+incidentMatrix.incNegMatx[pureNode].length)
 
                     })
-                    console.groupEnd()
+                    //console.groupEnd()
                     idSwitchNode(pureNode)
                     break
                 }
@@ -95,20 +101,20 @@ function GraphAlgorithm(totNodes,incidentMatrix, graph, idNodeSelect) {
         }
 
         else {
-            console.log('%cStai Uscendo', 'background: #222; color: red', pureSources)
+            //console.log('%cStai Uscendo', 'background: #222; color: red', pureSources)
             if(pureSources.length !==1)
             {
                 idSwitchNode(pureNode)}
             else{
-                console.log('%cSei Uscendo', 'background: #222; color: red')
+                //console.log('%cSei Uscendo', 'background: #222; color: red')
                 break
             }
         }
     }
 
 
-    console.log('how it read')
-    console.log(howItRead)
+    // console.log('how it read')
+    // console.log(howItRead)
 
     return howItRead
 }
