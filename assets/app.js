@@ -8,10 +8,7 @@ import Recapt from "./Service/Recapt";
 import { Container, Card, CardContent, Typography, Grid } from '@mui/material';
 import dataPlantBuilder from "./Service/DataPlantBuilder";
 import HeuristicSupport from "./Service/HeuristicSupport";
-
-
-
-
+import heuristicSupport from "./Service/HeuristicSupport";
 
 
 const root = ReactDOM.createRoot(
@@ -22,13 +19,12 @@ const ArmorComponent = () => {
     const [height, setHeight] = useState(window.innerHeight)
     const [width, setWidth] = useState(window.innerWidth)
     const [geojsonDataPolilyne, setGeojsonDataPolilyne] = useState(null)
-    const [calcNodesGeomKey, setCalcNodesGeomKey] = useState(null)
     const [idNodes, setIdNodes] = useState([])
-    const [geojsonDataPhyUnique, setGeojsonDataPlantsUnique] = useState(null)
     const [geojsonHooksOnLedra, setGeojsonHooksOnLedra] = useState(null)
     const [stazioniStatoEcologico, setStazioniStatoEcologico] = useState(null)
     const [stazioniPrelievo, setStazioniPrelievo] = useState(null)
-    const[areYouHuman, setAreYouHuman] = useState(false)
+    const [areYouHuman, setAreYouHuman] = useState(false)
+    const [storicoPrelievo, setStoricoPrelievo] = useState(null)
 
     const handleResize = () => {
         const newHeight = window.innerHeight
@@ -42,35 +38,36 @@ const ArmorComponent = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response1 = await fetch('/MapGeometry/RiversLines.geojson');
-                if (!response1.ok) throw new Error('Errore nel caricamento di riverLines.geojson');
-                const riversData = await response1.json();
+                const riversResponse = await fetch('/MapGeometry/RiversLines.geojson');
+                if (!riversResponse.ok) throw new Error('Errore nel caricamento di riverLines.geojson');
+                const riversData = await riversResponse.json();
 
                 const response2 = await fetch('/MapGeometry/LedraAgganciatoUni.geojson');
                 if (!response2.ok) throw new Error('Errore nel caricamento di LedraHookedPlants.geojson');
                 const dataLedraUni = await response2.json();
 
-                const response3 = await fetch('/MapGeometry/StazioniStatoEcologico.geojson');
-                if (!response3.ok) throw new Error('Errore nel caricamento di RealOtherHookedPlants.geojson');
-                const stazioniStatoEcologico = await response3.json();
+                const responseStazioniStato = await fetch('/MapGeometry/StazioniStatoEcologico.geojson');
+                if (!responseStazioniStato.ok) throw new Error('Errore nel caricamento di RealOtherHookedPlants.geojson');
+                const stazioniStatoEcologico = await responseStazioniStato.json();
 
-                const response4 = await fetch('/MapGeometry/StazioniPrelievo.geojson');
-                if (!response4.ok) throw new Error('Errore nel caricamento di RealOtherHookedPlants.geojson');
-                const stazioniPrelievo = await response4.json();
+                const responseStazioniPrelievo = await fetch('/MapGeometry/StazioniPrelievo.geojson');
+                if (!responseStazioniStato.ok) throw new Error('Errore nel caricamento di RealOtherHookedPlants.geojson');
+                const stazioniPrelievo = await responseStazioniPrelievo.json();
 
-                const heuristic = new HeuristicSupport(riversData);
+                const responseStorico = await fetch('/MapGeometry/PrelieviStorico.geojson');
+                if (!responseStorico.ok) throw new Error('Errore nel caricamento di RealOtherHookedPlants.geojson');
+                const storicoPrelievo = await responseStorico.json();
 
-                console.log(stazioniStatoEcologico);
-
+                // console.log(stazioniStatoEcologico);
                 // Aggiorna lo stato con i dati caricati
-                setCalcNodesGeomKey(heuristic.calcNode());
+                // console.log(storicoPrelievo)
+
                 setIdNodes([]);
-                //setGeojsonDataPlantsUnique(dataJson.GeojsonDataPlantsUnique);
                 setGeojsonDataPolilyne(riversData);
-                // setGeojsonHooksOnLedra(dataJson.Plants);
                 setAreYouHuman(true)
                 setStazioniStatoEcologico(stazioniStatoEcologico)
                 setStazioniPrelievo(stazioniPrelievo)
+                setStoricoPrelievo(storicoPrelievo)
 
                 console.log('Hai finito di caricare i dati')
             } catch (error) {
@@ -128,12 +125,12 @@ const ArmorComponent = () => {
                     {
 
                         <MapComponents rivers={geojsonDataPolilyne}
-                                       nodes={calcNodesGeomKey}
                                        idNodes={idNodes}
                                        hookOnLedra={geojsonHooksOnLedra}
                                        plants={geojsonHooksOnLedra}
                                        stazioniStato={stazioniStatoEcologico}
                                        stazioniPrelievo={stazioniPrelievo}
+                                       storicoPrelievo={storicoPrelievo}
                         />
 
                     }

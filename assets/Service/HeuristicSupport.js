@@ -5,10 +5,11 @@ import 'leaflet-polylinedecorator';
 
 
 class HeuristicSupport {
-  constructor(graph) {
+  constructor(graph, staPrelievo) {
     this.graph = graph;
     this.nodes = {realtionLines:{}, intersection:[]};
     this.idNodes = [];
+    this.stationsPrelievo = staPrelievo
   }
 
   calcNode() {
@@ -93,6 +94,21 @@ class HeuristicSupport {
 
     return this.nodes;
   }
+
+  calcProssimityStationStato(stationStato){
+
+    console.log(this.graph)
+    console.log(this.stationsPrelievo)
+    console.log(stationStato)
+
+
+  }
+
+  calcProssimityStorico(prelievo){
+
+
+}
+
 }
 
 
