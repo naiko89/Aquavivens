@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { GeoJSON, LayerGroup } from 'react-leaflet';
 import PolylineFlumen from "../component/map/geometries/PolylineFlumen";
-import MarkerNode from "../component/map/geometries/MarkerNode";
-import MarkerPlant from "../component/map/geometries/MarkerPlant";
-import MarkerChemy from "../component/map/geometries/MarkerChemy";
+import MarkerNode from "../component/map/geometries/marker/MarkerNode";
+import MarkerPlant from "../component/map/geometries/marker/MarkerPlant";
+import MarkerChemy from "../Utilities/Trash/MarkerChemy";
 import MarkerStation from "../component/map/geometries/MarkerStation";
 import hash from 'object-hash';
 import 'leaflet-polylinedecorator';

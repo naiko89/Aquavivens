@@ -1,14 +1,10 @@
 import './bootstrap.js';
 import './styles/app.css'
-import leaflet from 'leaflet';
 import React, {useEffect, useState} from "react"
 import ReactDOM from "react-dom/client"
 import MapComponents from "./component/MapComponents";
 import Recapt from "./Service/Recapt";
 import { Container, Card, CardContent, Typography, Grid } from '@mui/material';
-import dataPlantBuilder from "./Service/DataPlantBuilder";
-import HeuristicSupport from "./Service/HeuristicSupport";
-import heuristicSupport from "./Service/HeuristicSupport";
 
 
 const root = ReactDOM.createRoot(
@@ -20,11 +16,13 @@ const ArmorComponent = () => {
     const [width, setWidth] = useState(window.innerWidth)
     const [geojsonDataPolilyne, setGeojsonDataPolilyne] = useState(null)
     const [idNodes, setIdNodes] = useState([])
-    const [geojsonHooksOnLedra, setGeojsonHooksOnLedra] = useState(null)
+    const [prelieviLedra, setPrelieviLedra] = useState(null)
     const [stazioniStatoEcologico, setStazioniStatoEcologico] = useState(null)
     const [stazioniPrelievo, setStazioniPrelievo] = useState(null)
     const [areYouHuman, setAreYouHuman] = useState(false)
     const [storicoPrelievo, setStoricoPrelievo] = useState(null)
+    const [impiantiDepurazione, setImpiantiDepurazione] = useState(null)
+    const [inImpiantiVirtual, setInImpiantiVirtual] = useState(null)
 
     const handleResize = () => {
         const newHeight = window.innerHeight
@@ -35,6 +33,8 @@ const ArmorComponent = () => {
     window.addEventListener("resize", handleResize) //useEffect(() => {handleResize(); return () => window.removeEventListener("resize", handleResize)}, [])
 
 
+    console.log(prelieviLedra)
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -42,25 +42,29 @@ const ArmorComponent = () => {
                 if (!riversResponse.ok) throw new Error('Errore nel caricamento di riverLines.geojson');
                 const riversData = await riversResponse.json();
 
-                const response2 = await fetch('/MapGeometry/LedraAgganciatoUni.geojson');
-                if (!response2.ok) throw new Error('Errore nel caricamento di LedraHookedPlants.geojson');
-                const dataLedraUni = await response2.json();
+                const dataLedraResponse = await fetch('/MapGeometry/LedraAgganciatoUni.geojson');
+                if (!dataLedraResponse.ok) throw new Error('Errore nel caricamento di LedraHookedPlants.geojson');
+                const dataLedraUni = await dataLedraResponse.json();
 
                 const responseStazioniStato = await fetch('/MapGeometry/StazioniStatoEcologico.geojson');
-                if (!responseStazioniStato.ok) throw new Error('Errore nel caricamento di RealOtherHookedPlants.geojson');
+                if (!responseStazioniStato.ok) throw new Error('Errore nel caricamento di StazioniStatoEcologico.geojson');
                 const stazioniStatoEcologico = await responseStazioniStato.json();
 
                 const responseStazioniPrelievo = await fetch('/MapGeometry/StazioniPrelievo.geojson');
-                if (!responseStazioniStato.ok) throw new Error('Errore nel caricamento di RealOtherHookedPlants.geojson');
+                if (!responseStazioniStato.ok) throw new Error('Errore nel caricamento di StazioniPrelievo.geojson');
                 const stazioniPrelievo = await responseStazioniPrelievo.json();
 
                 const responseStorico = await fetch('/MapGeometry/PrelieviStorico.geojson');
-                if (!responseStorico.ok) throw new Error('Errore nel caricamento di RealOtherHookedPlants.geojson');
+                if (!responseStorico.ok) throw new Error('Errore nel caricamento di PrelieviStorico.geojson');
                 const storicoPrelievo = await responseStorico.json();
 
-                // console.log(stazioniStatoEcologico);
-                // Aggiorna lo stato con i dati caricati
-                // console.log(storicoPrelievo)
+                const responseImpiantiDepurazione = await fetch('/MapGeometry/ImpiantiDepurazione.geojson')
+                if(!responseImpiantiDepurazione.ok) throw new Error('Errore nel caricamento di ImpiantiDepurazione.geojson')
+                const impiantiDepurazione = await responseImpiantiDepurazione.json();
+
+                const responseInVirtualImpianti = await fetch('/MapGeometry/ImpiantiVirtualIn.geojson')
+                if(!responseInVirtualImpianti.ok) throw new Error('Errore nel caricamento di ImpiantiVirtualIn.geojson')
+                const impiantiDepurazioneInVirtual = await responseInVirtualImpianti.json();
 
                 setIdNodes([]);
                 setGeojsonDataPolilyne(riversData);
@@ -68,14 +72,15 @@ const ArmorComponent = () => {
                 setStazioniStatoEcologico(stazioniStatoEcologico)
                 setStazioniPrelievo(stazioniPrelievo)
                 setStoricoPrelievo(storicoPrelievo)
+                setImpiantiDepurazione(impiantiDepurazione)
+                setInImpiantiVirtual(impiantiDepurazioneInVirtual)
+                setPrelieviLedra(dataLedraUni)
 
                 console.log('Hai finito di caricare i dati')
             } catch (error) {
                 console.error('Errore nel caricamento del file GeoJSON:', error);
             }
         }
-
-
         fetchData();
     }, []);
 
@@ -123,23 +128,21 @@ const ArmorComponent = () => {
 
                 : <div id="my-map-box" style={{ width: width + 'px', height: height + 'px' }}>
                     {
-
                         <MapComponents rivers={geojsonDataPolilyne}
                                        idNodes={idNodes}
-                                       hookOnLedra={geojsonHooksOnLedra}
-                                       plants={geojsonHooksOnLedra}
+                                       prelieviLedra={prelieviLedra}
                                        stazioniStato={stazioniStatoEcologico}
                                        stazioniPrelievo={stazioniPrelievo}
                                        storicoPrelievo={storicoPrelievo}
+                                       impiantiDepurazione={impiantiDepurazione}
+                                       virtualImpiantiIn={inImpiantiVirtual}
                         />
 
                     }
-                </div>
+                  </div>
 
                     }
-                </div>
+        </div>
                 );
             };
-
-
-            root.render(<><ArmorComponent/></>)
+root.render(<><ArmorComponent/></>)
