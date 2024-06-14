@@ -4,10 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98726f3c-d87e-49df-a3e4-d9364a60fdf3" name="Changes" comment="Base structure and relationship done">
+    <list default="true" id="98726f3c-d87e-49df-a3e4-d9364a60fdf3" name="Changes" comment="Conflict">
+      <change afterPath="$PROJECT_DIR$/php.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Images/cheIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Images/impianto.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Images/impianto.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Images/nodeIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Images/nodes-line.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Images/phyIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Images/prelievoPunto.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Images/prelievoPunto.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Images/stazioneAmb.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Images/stazioneAmbientale.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/ImpiantiDepurazione.geojson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/ImpiantiVirtualIn.geojson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/LedraAgganciatoUni.geojson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/LedraPoints.geojson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/PrelieviStorico.geojson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/RilevamentoAcqueAgganciato.geojson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/RiversLines.geojson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/RiversLiness.geojson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/StazioniPrelievo.geojson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/StazioniStatoEcologico.geojson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/csvData/chemyLedra.cpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/csvData/chemyLedra.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/csvData/chemyLedra.dbf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/csvData/chemyLedra.prj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/csvData/chemyLedra.shp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/csvData/chemyLedra.shx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/MapGeometry/impiantiInVirtual.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,6 +153,15 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+        <entry key="com.intellij.reactbuddy.storybook" value="false" />
+      </map>
+    </option>
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/MapGeometry" />
@@ -133,6 +171,14 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/MapGeometry" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PS-241.14494.237" />
+        <option value="bundled-php-predefined-ba97393d7c68-8f0632a2a215-com.jetbrains.php.sharedIndexes-PS-241.14494.237" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -162,6 +208,7 @@
       <workItem from="1698732609360" duration="8767000" />
       <workItem from="1698864990066" duration="10605000" />
       <workItem from="1698907488970" duration="13619000" />
+      <workItem from="1718362477067" duration="2688000" />
     </task>
     <task id="LOCAL-00001" summary="development environment">
       <option name="closed" value="true" />
@@ -179,7 +226,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698740232576</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Conflict">
+      <option name="closed" value="true" />
+      <created>1718382287639</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718382287639</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,7 +254,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="development environment" />
     <MESSAGE value="Base structure and relationship done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Base structure and relationship done" />
+    <MESSAGE value="Conflict" />
+    <option name="LAST_COMMIT_MESSAGE" value="Conflict" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
